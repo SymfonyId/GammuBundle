@@ -31,9 +31,9 @@ abstract class AbstractManager implements ManagerInterface
         $this->resultSetMapping = $resultSetMapping;
     }
 
-    public function execute($sql, array $parameters = array())
+    public function execute($sql, array $parameters = array(), ResultSetMapping $resultMapping = null)
     {
-        $query = $this->entityManager->createNativeQuery($sql, $this->resultSetMapping);
+        $query = $this->entityManager->createNativeQuery($sql, ! $resultMapping? : $this->resultSetMapping);
         $result = $query->execute($parameters);
 
         return $result;

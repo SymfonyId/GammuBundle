@@ -15,4 +15,6 @@ interface ManagerInterface
     public function findAll();
 
     public function findLimit($limit, $start = 0);
+
+    public function countRecord();
 }
