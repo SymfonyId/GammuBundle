@@ -21,6 +21,23 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('symfonian_indonesia_gammu');
 
         $rootNode
+            ->children()
+                ->arrayNode('gammu')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                    ->children()
+                        ->scalarNode('smsd_inject_path')->end()
+                        ->arrayNode('smsdrc_path')
+                            ->prototype('array')
+                                ->children()
+                                    ->scalarNode('name')->end()
+                                    ->scalarNode('path')->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
         ;
 
         return $treeBuilder;

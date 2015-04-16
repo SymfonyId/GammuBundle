@@ -1,0 +1,16 @@
+[gammu]
+port = /dev/ttyUSB0
+connection = at115200
+
+[smsd]
+phoneid = Modem1
+service = MYSQL #database
+logfile = /var/log/smsdlog #letak log file
+debuglevel = 1 #level debugging, The higher the level, the deeper it will be
+commtimeout = 15
+sendtimeout = 15
+checksecurity = 0
+user = user #user database
+password = password #password database
+pc = localhost #alamat database
+database = sms #nama database
