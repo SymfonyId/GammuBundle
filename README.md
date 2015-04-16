@@ -29,23 +29,16 @@ kepada anak yatim diberbagai daerah di Indonesia (sistem bergilir). Bila Anda pe
 dengan program dan atau software yang kami buat. Sudilah kiranya Anda menyisihkan sebagian hasil dari pemanfaatan software ini
 untuk keberlangsungan komunitas ini.
 
-Rekening Donasi
-===============
-**BCA : 1960342344 a.n. Ali Subhan**
+**Rekening Donasi**
+- BCA : 1960342344 a.n. Ali Subhan
+- BNI : 0157056158 a.n. Ali Subhan
+- BRI : 0010-01-030612-50-9 a.n. Ali Subhan
+- WU (Western Union)
 
-**BNI : 0157056158 a.n. Ali Subhan**
-
-**BRI : 0010-01-030612-50-9 a.n. Ali Subhan**
-
-**WU (Western Union)**
-
-Konfirmasi
-==========
-**Telegram : 085 707 545 888**
-
-**WA : 0852 2597 3035**
-
-**BB : 5235F099**
+**Konfirmasi**
+- Telegram : 085 707 545 888
+- WA : 0852 2597 3035
+- BB : 5235F099
 
 ####LISENSI####
 MIT tanpa ada garansi apapun.
