@@ -8,33 +8,33 @@ namespace Symfonian\Indonesia\GammuBundle\Manager;
 
 use Doctrine\ORM\Query\ResultSetMapping;
 
-class InboxManager extends AbstractManager implements ManagerInterface
+class SentItemsManager extends AbstractManager implements ManagerInterface
 {
     public function __construct(\Doctrine\ORM\EntityManagerInterface $entityManager)
     {
         parent::__construct($entityManager);
 
         $resultSetMapping = new ResultSetMapping();
-        $resultSetMapping->addScalarResult('SenderNumber', 'sender');
+        $resultSetMapping->addScalarResult('DestinationNumber', 'receiver');
         $resultSetMapping->addScalarResult('TextDecoded', 'message');
-        $resultSetMapping->addScalarResult('Processed', 'processed');
-        $resultSetMapping->addScalarResult('RecipientID', 'modem');
+        $resultSetMapping->addScalarResult('Status', 'status');
+        $resultSetMapping->addScalarResult('SenderID', 'modem');
 
         $this->setResultMapping($resultSetMapping);
     }
 
     public function getTable()
     {
-        return 'inbox';
+        return 'sentitems';
     }
 
-    protected function getGlobalSQL()
+    public function getGlobalSQL()
     {
-        return 'SELECT SenderNumber, TextDecoded, Processed, RecipientID FROM '.$this->getTable();
+        return 'SELECT DestinationNumber, TextDecoded, Status, SenderID FROM '.$this->getTable();
     }
 
     public function findByPhoneNumber($phoneNumber)
     {
-        return $this->findBy(array('SenderNumber' =>  $phoneNumber));
+        return $this->findBy(array('DestinationNumber' =>  $phoneNumber));
     }
 }

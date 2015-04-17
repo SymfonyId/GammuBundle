@@ -12,6 +12,8 @@ interface ManagerInterface
 
     public function findBy(array $criteria);
 
+    public function searchBy(array $criteria);
+
     public function findAll();
 
     public function findLimit($limit, $start = 0);
