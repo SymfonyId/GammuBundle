@@ -15,10 +15,11 @@ class InboxManager extends AbstractManager implements ManagerInterface
         parent::__construct($entityManager);
 
         $resultSetMapping = new ResultSetMapping();
+        $resultSetMapping->addScalarResult('ID', 'id');
         $resultSetMapping->addScalarResult('SenderNumber', 'sender');
         $resultSetMapping->addScalarResult('TextDecoded', 'message');
         $resultSetMapping->addScalarResult('Processed', 'processed');
-        $resultSetMapping->addScalarResult('RecipientID', 'modem');
+        $resultSetMapping->addScalarResult('RecipientID', 'phone');
 
         $this->setResultMapping($resultSetMapping);
     }
@@ -30,7 +31,7 @@ class InboxManager extends AbstractManager implements ManagerInterface
 
     protected function getGlobalSQL()
     {
-        return 'SELECT SenderNumber, TextDecoded, Processed, RecipientID FROM '.$this->getTable();
+        return 'SELECT ID, SenderNumber, TextDecoded, Processed, RecipientID FROM '.$this->getTable();
     }
 
     public function findByPhoneNumber($phoneNumber)

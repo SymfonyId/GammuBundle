@@ -18,7 +18,7 @@ class SentItemsManager extends AbstractManager implements ManagerInterface
         $resultSetMapping->addScalarResult('DestinationNumber', 'receiver');
         $resultSetMapping->addScalarResult('TextDecoded', 'message');
         $resultSetMapping->addScalarResult('Status', 'status');
-        $resultSetMapping->addScalarResult('SenderID', 'modem');
+        $resultSetMapping->addScalarResult('SenderID', 'phone');
 
         $this->setResultMapping($resultSetMapping);
     }

@@ -8,7 +8,7 @@ namespace Symfonian\Indonesia\GammuBundle\Manager;
 
 use Doctrine\ORM\Query\ResultSetMapping;
 
-class OutboxManager extends AbstractManager implements ManagerInterface
+class PhoneBookGroupManager extends AbstractManager implements ManagerInterface
 {
     public function __construct(\Doctrine\ORM\EntityManagerInterface $entityManager)
     {
@@ -16,25 +16,23 @@ class OutboxManager extends AbstractManager implements ManagerInterface
 
         $resultSetMapping = new ResultSetMapping();
         $resultSetMapping->addScalarResult('ID', 'id');
-        $resultSetMapping->addScalarResult('DestinationNumber', 'receiver');
-        $resultSetMapping->addScalarResult('TextDecoded', 'message');
-        $resultSetMapping->addScalarResult('SenderID', 'phone');
+        $resultSetMapping->addScalarResult('Name', 'name');
 
         $this->setResultMapping($resultSetMapping);
     }
 
-    public function getTable()
+    protected function getGlobalSQL()
     {
-        return 'outbox';
+        return 'SELECT ID, Name FROM '.$this->getTable();
     }
 
-    public function getGlobalSQL()
+    protected function getTable()
     {
-        return 'SELECT ID, DestinationNumber, TextDecoded, SenderID FROM '.$this->getTable();
+        return 'pbk_groups';
     }
 
     public function findByPhoneNumber($phoneNumber)
     {
-        return $this->findBy(array('DestinationNumber' =>  $phoneNumber));
+        throw new \RuntimeException('This manager is not supported for findByPhoneNumber');
     }
 }
