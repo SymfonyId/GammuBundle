@@ -1,4 +1,4 @@
-#SymfonianIndonesiaGammuBundle#
+#Symfonian Indonesia Gammu Bundle [SIGAB]#
 
 Interface untuk Gammu SMS Deamon.
 
