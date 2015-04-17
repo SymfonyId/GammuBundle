@@ -32,6 +32,10 @@ class SendSMSProcessor extends AbstractProcessor implements ProcessorInterface
 
     public function process()
     {
+        if (! $this->receiver || ! $this->message) {
+            throw new \InvalidArgumentException('Receiver or Message is empty');
+        }
+
         $smsdPath = $this->container->getParameter('symfonian_id.gammu.smsd_inject_path');
 
         $format = 'TEXT';
@@ -43,7 +47,7 @@ class SendSMSProcessor extends AbstractProcessor implements ProcessorInterface
         $process->run();
 
         if (! $process->isSuccessful() && $process->getErrorOutput()) {
-            throw \RuntimeException($process->getErrorOutput());
+            throw new \RuntimeException($process->getErrorOutput());
         }
 
         return $process->getOutput();

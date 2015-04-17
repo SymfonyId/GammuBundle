@@ -31,7 +31,7 @@ class GammuCommandProcessor extends AbstractProcessor implements ProcessorInterf
         $process->run();
 
         if (! $process->isSuccessful() && $process->getErrorOutput()) {
-            throw \RuntimeException($process->getErrorOutput());
+            throw new \RuntimeException($process->getErrorOutput());
         }
 
         return $process->getOutput();
