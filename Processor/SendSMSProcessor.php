@@ -30,11 +30,6 @@ class SendSMSProcessor extends AbstractProcessor implements ProcessorInterface
         $this->message = $message;
     }
 
-    public function setConfigPath($path)
-    {
-        $this->config = $path;
-    }
-
     public function process()
     {
         $smsdPath = $this->container->getParameter('symfonian_id.gammu.smsd_inject_path');
@@ -45,9 +40,12 @@ class SendSMSProcessor extends AbstractProcessor implements ProcessorInterface
         }
 
         $process = new Process(sprintf('%s -c %s %s %s -text %s', $smsdPath, $this->config, $format, $this->receiver, $this->message));
+        $process->run();
 
-        if (! $process->isSuccessful()) {
-            throw new \RuntimeException($process->getErrorOutput());
+        if (! $process->isSuccessful() && $process->getErrorOutput()) {
+            throw \RuntimeException($process->getErrorOutput());
         }
+
+        return $process->getOutput();
     }
 }

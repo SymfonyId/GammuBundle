@@ -28,11 +28,12 @@ class GammuCommandProcessor extends AbstractProcessor implements ProcessorInterf
         $gammuPath = $this->container->getParameter('symfonian_id.gammu.gammu_path');
 
         $process = new Process(sprintf('%s -c %s --%s', $gammuPath, $this->config, $this->command));
+        $process->run();
 
-        if (! $process->isSuccessful()) {
-            throw new \RuntimeException($process->getErrorOutput());
+        if (! $process->isSuccessful() && $process->getErrorOutput()) {
+            throw \RuntimeException($process->getErrorOutput());
         }
 
-        echo $process->getOutput();
+        return $process->getOutput();
     }
 }

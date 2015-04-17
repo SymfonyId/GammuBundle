@@ -4,13 +4,14 @@ connection = at115200
 
 [smsd]
 phoneid = Modem1
-service = MYSQL #database
-logfile = /var/log/smsdlog #letak log file
-debuglevel = 1 #level debugging, The higher the level, the deeper it will be
+service = SQL
+driver = native_mysql
+logfile = /var/log/smsdlog
+debuglevel = 1
 commtimeout = 15
 sendtimeout = 15
 checksecurity = 0
-user = user #user database
-password = password #password database
-pc = localhost #alamat database
-database = sms #nama database
+user = user
+password = password
+pc = localhost
+database = sms
