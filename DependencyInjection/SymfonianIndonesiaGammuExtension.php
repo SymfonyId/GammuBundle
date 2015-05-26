@@ -33,8 +33,8 @@ class SymfonianIndonesiaGammuExtension extends Extension
         }
 
         foreach ($config['smsdrc_path'] as $key => $smsdrc) {
-            if ($fileSystem->exists($smsdrc['path'])) {
-                throw new FileNotFoundException(sprintf('%s not found.'));
+            if (! $fileSystem->exists($smsdrc['path'])) {
+                throw new FileNotFoundException(sprintf('%s not found.', $smsdrc['path']));
             }
 
             if (! $container->hasParameter('symfonian_id.gammu.smsdrc.default')) {
